@@ -65,6 +65,7 @@ Checkout the code.
 Install dependencies for frontend and backend.
 Run unit tests for both services.
 If successful, initiate a merge from dev to main.
+
 Build, Test, and Deploy on main Merge:
 Checkout the code.
 Install dependencies for frontend and backend.
