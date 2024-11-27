@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// :thumbsup:
+// :thumbsup: khodor i hope devops/mlops is not the future
 
 const mongoURI = process.env.MONGO_URL || "mongodb+srv://todolist:reverse@dbreversetodolist.32f5n.mongodb.net/?retryWrites=true&w=majority&appName=DBReverseTodoList";
 mongoose.connect(mongoURI, {
