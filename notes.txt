@@ -45,6 +45,7 @@ On merging a feature branch into the dev branch:
 Build the project.
 Run unit tests.
 If successful, automatically trigger a merge of the dev branch into the main branch.
+
 On merging the dev branch into the main branch:
 Build the project.
 Run all unit tests.
