@@ -12,9 +12,7 @@ services:
       - app-network
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: matt06/devops-backend-cd:latest
     container_name: backend
     restart: always
     ports:
@@ -27,11 +25,7 @@ services:
       - app-network
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-      args:
-        REACT_APP_API_URL: http://localhost:3001
+    image: matt06/devops-frontend-cd:latest
     container_name: frontend
     restart: always
     ports:
