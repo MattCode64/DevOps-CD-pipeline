@@ -34,6 +34,9 @@ jobs:
         working-directory: ./backend
         run: npm test
 
+      - name: Set DOCKER_USERNAME environment variable
+        run: echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> $GITHUB_ENV
+
       - name: Install E2E dependencies
         working-directory: ./e2e-tests
         run: npm install
