@@ -11,6 +11,7 @@ app.use(express.json());
 // :thumbsup: khodor i hope devops/mlops is not the future
 // I hesitate to buy an air fryer
 // I bought it !
+// DOCKERHUB IMAGES!!!!!!!!!!!!!!!!!
 
 const mongoURI =
   process.env.MONGO_URL ||

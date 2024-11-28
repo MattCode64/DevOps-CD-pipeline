@@ -1,4 +1,4 @@
-name: Continuous Deployment (Feature to Dev) Workflow
+name: Continuous Deployment Workflow
 
 on:
   push:

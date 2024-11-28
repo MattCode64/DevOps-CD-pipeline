@@ -1,4 +1,4 @@
-name: Continuous Deployment (Main to Dev) Workflow
+name: Continuous Deployment (Docker) Workflow
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   docker_and_dev_to_main:
-    name: Push to Dockerhub and Merge dev to main
+    name: Push to Dockerhub
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
