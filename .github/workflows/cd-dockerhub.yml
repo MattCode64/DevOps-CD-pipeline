@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  docker_and_dev_to_main:
-    name: Push to Dockerhub
+  docker_and_e2e_tests:
+    name: Push to Dockerhub and run E2E tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -33,6 +33,35 @@ jobs:
       - name: Run unit tests for backend
         working-directory: ./backend
         run: npm test
+
+      - name: Install E2E dependencies
+        working-directory: ./e2e-tests
+        run: npm install
+
+      - name: Start Application with Docker Compose
+        working-directory: ./
+        run: |
+          docker compose up -d
+          echo "Waiting for application to start..."
+          sleep 30
+
+      - name: Check if application is running
+        run: |
+          curl -v http://localhost:3000 || exit 1
+
+      - name: Run E2E tests
+        working-directory: ./e2e-tests
+        env:
+          NODE_ENV: test
+        run: |
+          # Installer ChromeDriver et lancer les tests Selenium
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          wget -q https://chromedriver.storage.googleapis.com/$(curl -s https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip
+          sudo mv chromedriver /usr/local/bin/
+          export PATH=$PATH:/usr/local/bin/
+          npm run test # Lancer les tests E2E avec Selenium
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
