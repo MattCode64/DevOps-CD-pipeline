@@ -7,7 +7,7 @@ on:
 
 jobs:
   feature_to_dev:
-    name: Merge feature branch into dev
+    name: Merge dev to main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -37,7 +37,7 @@ jobs:
       - name: Merge dev into main
         uses: devmasx/merge-branch@master
         with:
-          from_branch: please-work
-          target_branch: dev
+          from_branch: dev
+          target_branch: main
           github_token: ${{ secrets.TOKEN }}
           type: now
