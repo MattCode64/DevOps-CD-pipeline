@@ -5,6 +5,7 @@ on:
     branches:
       - please-work
       - dev
+  workflow_dispatch:
 
 jobs:
   feature_to_dev:
@@ -71,6 +72,14 @@ jobs:
         working-directory: ./backend
         run: npm test
 
+      - name: Merge dev into main
+        uses: devmasx/merge-branch@master
+        with:
+          from_branch: dev
+          target_branch: main
+          github_token: ${{ secrets.TOKEN }}
+          type: now
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -87,11 +96,3 @@ jobs:
       - name: Push Docker images to Docker Hub
         run: |
           docker compose push
-
-      - name: Merge dev into main
-        uses: devmasx/merge-branch@master
-        with:
-          from_branch: dev
-          target_branch: main
-          github_token: ${{ secrets.TOKEN }}
-          type: now
