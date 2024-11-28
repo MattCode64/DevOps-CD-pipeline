@@ -3,7 +3,7 @@ name: Continuous Deployment (Feature to Dev) Workflow
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   feature_to_dev:

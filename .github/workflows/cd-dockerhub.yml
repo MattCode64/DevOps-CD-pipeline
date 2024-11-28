@@ -3,7 +3,7 @@ name: Continuous Deployment (Main to Dev) Workflow
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   docker_and_dev_to_main:
